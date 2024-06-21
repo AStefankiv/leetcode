@@ -1,7 +1,13 @@
 let randomNum = Math.floor(Math.random() * 10);
-console.log(randomNum);
 
 const userInput = process.argv[2];
-if (userInput == randomNum) {
-  console.log('You guessed the right number!');
+
+const guessRamdomNumber = (userInput) => {
+  if (userInput == randomNum) {
+    console.log('You guessed the right number!');
+  } else {
+    console.log(`You guessed the wrong number. The right number is ${randomNum}`);
+  }
 }
+
+guessRamdomNumber(userInput);

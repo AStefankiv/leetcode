@@ -1,5 +1,5 @@
 import React from 'react';
-import axios from 'axios';
+import API from '../api';
 
 export default class PersonRemove extends React.Component {
   state = {
@@ -10,14 +10,23 @@ export default class PersonRemove extends React.Component {
     this.setState({ id: event.target.value });
   }
 
-  handleSubmit = event => {
+  handleSubmit = async event => {
     event.preventDefault();
+    
+    try {
+      const response = await API.delete(`users/${this.state.id}`);
+      console.log(response);
+      console.log(response.data);
+    } catch (error) {
+      console.error("Error: ", error);
+    }
 
-    axios.delete(`https://jsonplaceholder.typicode.com/users/${this.state.id}`)
-      .then(res => {
-        console.log(res);
-        console.log(res.data);
-      })
+    // API.delete(`users/${this.state.id}`)
+    //   .then(res => {
+    //     console.log(res);
+    //     console.log(res.data);
+    //     console.log('API: ', API);
+    //   })
   }
 
   render() {

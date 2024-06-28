@@ -23,9 +23,13 @@
       function Main(props) {
         return (
           <section>
+            <img
+              height={200}
+              src='https://images.pexels.com/photos/262978/pexels-photo-262978.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' ></img>
+              alt="A table full of food"
             <ul>
               {props.dishes.map(dish => (
-                <li>{dish}</li>
+                <li key={dish.id}>{dish.title}</li>
               ))}
             </ul>
           </section>
@@ -46,12 +50,13 @@
         "Tofu with Vegetables",
         "Salmon and Potatoes"
       ];
+      const dishObjects = dishes.map((dish, i) => ({ id: i, title: dish }));
 
       function App() {
         return (
           <div>
             <Headrer name="Eve" />
-            <Main adjective="amazing" dishes={dishes} />
+            <Main adjective="amazing" dishes={dishObjects} />
             <Footer year={new Date().getFullYear()} />
           </div>
         )

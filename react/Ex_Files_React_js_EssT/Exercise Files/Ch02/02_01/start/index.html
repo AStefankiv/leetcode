@@ -25,8 +25,8 @@
           <section>
             <img
               height={200}
+              alt='A table full of food'
               src='https://images.pexels.com/photos/262978/pexels-photo-262978.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' ></img>
-              alt="A table full of food"
             <ul>
               {props.dishes.map(dish => (
                 <li key={dish.id}>{dish.title}</li>
@@ -54,11 +54,11 @@
 
       function App() {
         return (
-          <div>
+          <React.Fragment>
             <Headrer name="Eve" />
             <Main adjective="amazing" dishes={dishObjects} />
             <Footer year={new Date().getFullYear()} />
-          </div>
+          </React.Fragment>
         )
       }
       ReactDOM.render(

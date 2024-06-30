@@ -1,45 +1,43 @@
 import './App.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
-function useInput(initialValue) {
-  const [value, setValue] = useState(initialValue);
-  return [
-    {
-      value, onChange: (e) => setValue(e.target.value)
-    },
-    () => setValue(initialValue)
-  ];
+function GithubUser({ name, location, avatar }) {
+  return (
+    <div>
+      <h1>{name}</h1>
+      <p>{location}</p>
+      <img src={avatar} height={150} alt={name} />
+    </div>
+  )
 }
 
 function App() {
+  const [data, setData] = useState(null);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
 
-  const [titleProps, resetTitle] = useInput('');
-  const [colorProps, resetColor] = useInput('#000000');
+  useEffect(() => {
+    setLoading(true);
+    fetch(`https://api.github.com/users/moonhighway`)
+    .then(res => res.json())
+    .then(data => setData(data))
+    .then(() => setLoading(false))
+    .catch(setError);
 
-  const submit = (e) => {
-    e.preventDefault();
-    alert(`${titleProps.value} ${colorProps.value}`);
-    resetTitle();
-    resetColor();
+    console.log('Data:', data);
+  }, []);
 
-    console.log(titleProps.value);
-    console.log(colorProps.value);
-  };
+  if (loading) return <h1>Loading...</h1>;
+  if (error) return <pre>{JSON.stringify(error, null, 2)}</pre>;
+  if (!data) return null;
 
-  return (
-    <form onSubmit={submit}>
-      <input
-      {...titleProps}
-      type="text"
-      placeholder="color title..."
+    return (
+      <GithubUser
+      name={data.name}
+      location={data.location}
+      avater={data.avatar_url}
       />
-      <input
-      {...colorProps}
-      type="color"
-      />
-      <button>ADD</button>
-    </form>
-  );
+    );
 }
 
 export default App;

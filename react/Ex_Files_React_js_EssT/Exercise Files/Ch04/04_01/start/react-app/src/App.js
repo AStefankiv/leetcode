@@ -1,42 +1,34 @@
 import './App.css';
-import { useState, useEffect } from 'react';
 
-function GithubUser({ name, location, avatar }) {
-  return (
-    <div>
-      <h1>{name}</h1>
-      <p>{location}</p>
-      <img src={avatar} height={150} alt={name} />
-    </div>
+const tahoe_peaks = [
+  {name: "Freel Peak", elevation: 10891},
+  {name: "Monument Peak", elevation: 10067},
+  {name: "Pyramid Peak", elevation: 9983},
+  {name: "Mt. Tallac", elevation: 9735}
+];
+
+function List({data, renderItem, renderEmpty}) {
+  return !data.length ? (
+    renderEmpty
+  ) : (
+    <ul>
+      {data.map((item) => (
+        <li key={item.name}>
+          {renderItem(item)}
+        </li>
+      ))}
+    </ul>
   )
 }
 
 function App() {
-  const [data, setData] = useState(null);
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    setLoading(true);
-    fetch(`https://api.github.com/users/moonhighway`)
-    .then(res => res.json())
-    .then(data => setData(data))
-    .then(() => setLoading(false))
-    .catch(setError);
-
-    console.log('Data:', data);
-  }, []);
-
-  if (loading) return <h1>Loading...</h1>;
-  if (error) return <pre>{JSON.stringify(error, null, 2)}</pre>;
-  if (!data) return null;
-
     return (
-      <GithubUser
-      name={data.name}
-      location={data.location}
-      avater={data.avatar_url}
-      />
+      <List data={tahoe_peaks} renderEmpty={<p>This list is empty</p>}
+      renderItem={(item) => (
+        <>
+        {item.name} - {item.elevation} ft.
+        </>
+      )} />
     );
 }
 

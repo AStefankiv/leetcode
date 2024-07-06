@@ -4,10 +4,14 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import ExtensionApp from './ExtensionApp';
+
+const isExtension = window.location.protocol === 'chrome-extension:';
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    {isExtension ? <ExtensionApp /> : <App />}
   </React.StrictMode>
 );
 

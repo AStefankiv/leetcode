@@ -1,0 +1,18 @@
+.ExtensionApp {
+  width: 400px;
+  height: auto;
+  background-color: #f0f0f0;
+  text-align: center;
+}
+
+.ExtensionApp-header {
+  background-color: #282c34;
+  padding: 20px;
+  color: white;
+}
+
+.ExtensionApp button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+}

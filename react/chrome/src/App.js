@@ -9,7 +9,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Welcome to My Chrome Extension</h1>
+        <h1>Welcome to My Home page</h1>
         <button onClick={handleClick}>Click me</button>
       </header>
     </div>

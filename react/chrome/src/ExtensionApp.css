@@ -11,8 +11,15 @@
   color: white;
 }
 
-.ExtensionApp button {
+/* .ExtensionApp button {
   margin-top: 20px;
   padding: 10px 20px;
   font-size: 16px;
+} */
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
 }

@@ -1,6 +1,8 @@
 const string_check = (str1) => {
-    const str2 = 'py';
-    return str1.includes(str2);
+  if (str1 === null || str1 === undefined || str1.substring(0, 2) === 'Py') {
+    return str1;
+  }
+  return `Py${str1}`;
 }
 
-console.log(string_check('Python')); // true
+console.log(string_check('Python')); // Python

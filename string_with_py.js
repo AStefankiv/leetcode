@@ -6,3 +6,4 @@ const string_check = (str1) => {
 }
 
 console.log(string_check('Python')); // Python
+console.log(string_check("thon"));

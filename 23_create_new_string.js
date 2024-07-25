@@ -9,3 +9,4 @@ const newString = (str) => {
 }
 
 console.log(newString('Hello')); // Output: oellH
+console.log(newString('Hi')); // Output: Hi

@@ -1,5 +1,4 @@
-const largestInt = (arr) => {
-  return Math.max(...arr);
+const largestInt = (a, b, c) => {
+  return Math.max(a, b, c);
 }
-
-console.log(largestInt([1, 2, 3, 4, 5])); // 5
+console.log(largestInt(1, 2, 3)); // 3

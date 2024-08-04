@@ -4,3 +4,4 @@ const rightMostDigit = (num1, num2, num3) => {
 
 console.log(rightMostDigit(23, 33, 43)); // true
 console.log(rightMostDigit(23, 33, 44)); // false
+console.log(rightMostDigit(23, 33, 45)); // false

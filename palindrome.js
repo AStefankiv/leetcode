@@ -3,7 +3,7 @@ const isPalindrome = (string) => {
   if (opposite === string) {
     return true;
   }
-  return false;
+  return 'Not a palindrome';
 }
 
 console.log(palindrome('hello'));

@@ -14,3 +14,5 @@ const romanToInteger = (s) => {
 }
 
 console.log(romanToInteger('III')); // 3
+console.log(romanToInteger('IV')); // 4
+console.log(romanToInteger('IX')); // 9

@@ -10,6 +10,6 @@ const parenthesis = (str) => {
   return true;
 }
 
-console.log(parenthesis('()')); // true
-console.log(parenthesis('()[]{}')); // true
-console.log(parenthesis('(]')); // false
+console.log(parenthesis('()'));
+console.log(parenthesis('()[]{}'));
+console.log(parenthesis('(]'));

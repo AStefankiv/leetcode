@@ -1,6 +1,8 @@
-const removeElement = (arr, item) => {
-  return arr.filter(element => element !== item);
+const removeElement = (arr, items) => {
+  return arr.filter((item) => !items.includes(item));
 }
 
-const arrayNums = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-console.log(removeElement(arrayNums, 5)); // [1, 2, 3, 4, 6, 7, 8, 9]
+const arrayNums = [1, 2, 3, 4, 4, 5, 6, 6, 7];
+const items = [4, 6];
+
+console.log(removeElement(arrayNums, items)); // [1, 2, 3, 5, 7]

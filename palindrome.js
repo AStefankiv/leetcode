@@ -1,10 +1,9 @@
 const isPalindrome = (string) => {
-  let opposite = string.split('').reverse(' ').join('')
-  if (opposite === string) {
-    return 'Is a palindrome';
-  }
-  return 'Not a palindrome';
+  let opposite = string.split('').reverse().join('');
+  return string === opposite;
 }
 
-console.log(palindrome('hello'));
-console.log(palindrome('level'));
+const str = 'racecar';
+console.log(isPalindrome(str)); // true
+const str2 = 'hello';
+console.log(isPalindrome(str2)); // false

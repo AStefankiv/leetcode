@@ -1,6 +1,8 @@
-const two_arrays = (arr1, arr2) => {
-  const merge = arr1.concat(arr2);
-  return merge.sort((a, b) => a - b);
+const twoArraysMerge = (arr1, arr2) => {
+  const merged = arr1.concat(arr2);
+  return merged.sort(a, b => a - b);
 };
 
-console.log(two_arrays([1, 3, 5], [2, 4, 6])); // [1, 2, 3, 4, 5, 6]
+const arr1 = [1, 3, 5];
+const arr2 = [2, 4, 6];
+console.log(twoArraysMerge(arr1, arr2)); // [1, 2, 3, 4, 5, 6]

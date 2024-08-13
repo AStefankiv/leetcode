@@ -1,15 +1,38 @@
-const parenthesis = (str) => {
-  const open = ['(', '[', '{'];
-  const close = [')', ']', '}'];
-  for (let i = 0; i < str.length; i++) {
-    if (open.includes(str[i])) {//if open is found in the string
-      if (!close.includes(str[i + 1]))
-        return false;
+const parenthesisOpenClose = (str) => {
+  let open = {
+    '{': '}',
+    '[': ']',
+    '(': ')'
+  };
+  let firstHalf = str.slice(0, str.length / 2);
+  let secondHalf = str.slice(str.length / 2);
+  let secondHalfReversed = secondHalf.split('').reverse().join('');
+  if (firstHalf.length !== secondHalf.length) {
+    return false;
+  }
+  for (let i in open) {
+    if (firstHalf.includes(i)) {
+      if (secondHalfReversed.includes(open[i])) {
+        return true;
+      }
     }
   }
-  return true;
-}
+};
 
-console.log(parenthesis('()'));
-console.log(parenthesis('()[]{}'));
-console.log(parenthesis('(]'));
+const str = '({[]})';
+console.log(parenthesisOpenClose(str)); // true
+const str2 = '({[})';
+console.log(parenthesisOpenClose(str2)); // false
+
+
+
+// let open = {
+//   '{': '}',
+//   '[': ']',
+//   '(': ')'
+// };
+
+// for (let i in open) {
+//   console.log(i);//open
+//   console.log(open[i]);//close
+// }

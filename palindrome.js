@@ -1,9 +1,8 @@
-const isPalindrome = (string) => {
-  let opposite = string.split('').reverse().join('');
-  return string === opposite;
+const palindromeWord = (string) => {
+  return string === string.split('').reverse('').join('')
 }
 
-const str = 'racecar';
-console.log(isPalindrome(str)); // true
-const str2 = 'hello';
-console.log(isPalindrome(str2)); // false
+const word = 'level'
+console.log(palindromeWord(word))
+const word1 = 'levels'
+console.log(palindromeWord(word1))

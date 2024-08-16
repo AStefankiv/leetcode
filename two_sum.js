@@ -10,4 +10,4 @@ const two_sum = (nums, target) => {
 
 const nums = [33, 44, 55, 66, 77, 88, 99];
 const target = 143;
-console.log(two_sum(nums, target)); // [44, 99]
+console.log(two_sum(nums, target));

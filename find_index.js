@@ -4,4 +4,4 @@ const findIndex = (string, word) => {
 
 const string = 'sadbutsad';
 const word = 'sad';
-console.log(findIndex(string, word)); // 0
+console.log(findIndex(string, word));

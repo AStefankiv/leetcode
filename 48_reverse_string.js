@@ -5,3 +5,4 @@ const reverse = (str) => {
 console.log(reverse('hello')); // olleh
 console.log(reverse('world')); // dlrow
 console.log(reverse('javascript')); // tpircsavaj
+console.log(reverse('programming')); // gnimmargorp

@@ -8,5 +8,5 @@ const removeDuplicates = (arr) => {
   return result;
 }
 
-const arr = [1, 2, 3, 4, 4, 5, 6, 6, 7];
+const arr = [1, 2, 3, 4, 4, 5, 6, 6, 7, 7];
 console.log(removeDuplicates(arr)); // [1, 2, 3, 4, 5, 6, 7]

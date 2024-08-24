@@ -1,4 +1,5 @@
 const prices = [7,1,5,3,6,4];
+const prices2 = [7,6,4,3,1];
 function maxProfit(prices) {
   if (prices.length === 0) return 0;
 
@@ -18,3 +19,4 @@ function maxProfit(prices) {
 
 
 console.log(maxProfit(prices)); // 7
+console.log(maxProfit(prices2)); // 0

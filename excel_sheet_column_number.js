@@ -5,3 +5,7 @@ const excel_sheet_column_number = (s) => {
     }
     return result;
 }
+
+console.log(excel_sheet_column_number('A')); // 1
+console.log(excel_sheet_column_number('B')); // 2
+console.log(excel_sheet_column_number('AB')); // 28

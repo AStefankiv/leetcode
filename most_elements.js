@@ -7,10 +7,6 @@ for (let i = 0; i < array.length; i++) {
     object[array[i]] += 1;
   }
 }
-console.log(object); // { '1': 2, '2': 1, '3': 3 }
 
-// object[array[0]] = 1;
-// console.log(object[array[0]]); // 1
-// object[array[0]] += 1;
-// console.log(object[array[0]]); // 2
-// console.log(object);
+max_value = Math.max(...Object.values(object));
+console.log(max_value);

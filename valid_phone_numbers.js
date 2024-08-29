@@ -17,9 +17,18 @@ const readPhoneNums = (file) => {
       console.log(err);
       return;
     } else {
-      console.log(data);
+      if (data) {
+        const phoneNumbers = data.split('\n');
+        for (let i = 0; i < phoneNumbers.length; i++) {
+          if (phoneNumbers[i].match(/^\d{3}-\d{3}-\d{4}$|^\(\d{3}\) \d{3}-\d{4}\r?$/)) {
+            console.log(phoneNumbers[i]);
+          } else {
+            console.log('Invalid phone number');
+          }
+        }
+      }
     }
-  });
-}
+  }
+)}
 
 readPhoneNums(phoneNums);

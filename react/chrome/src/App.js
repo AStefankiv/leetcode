@@ -37,7 +37,7 @@ function App() {
               } 
             />
             <Route path="/name" element={<Name />} />
-            <Route path="/name_1" element={<Name1 />} />
+            <Route path="/name1" element={<Name1 />} />
           </Routes>
         </header>
       </div>

@@ -37,7 +37,7 @@ const Name1 = () => {
 
     // Cleanup function to clear the timer when the component unmounts
     return () => clearInterval(timer);
-  }, []); // Empty array means the timer is set up once on mount
+  }, []);
 
   return (
     <div>

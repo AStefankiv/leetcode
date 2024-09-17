@@ -12,21 +12,21 @@ for (let i = 0; i < nums.length; i += 1) {
   }
 }
 
-const summaryRanges = (nums) => {
-  const result = [];
-  for (let i = 0; i < nums.length; i += 1) {
-    let start = nums[i];
-    while (nums[i + 1] - nums[i] === 1) {
-      i += 1;
-    }
-    if (start !== nums[i]) {
-      result.push(start + '->' + nums[i]);
-    } else {
-      result.push(start.toString());
-    }
-  }
-  return result;
-}
+// const summaryRanges = (nums) => {
+//   const result = [];
+//   for (let i = 0; i < nums.length; i += 1) {
+//     let start = nums[i];
+//     while (nums[i + 1] - nums[i] === 1) {
+//       i += 1;
+//     }
+//     if (start !== nums[i]) {
+//       result.push(start + '->' + nums[i]);
+//     } else {
+//       result.push(start.toString());
+//     }
+//   }
+//   return result;
+// }
 
-console.log(summaryRanges([0, 1, 2, 4, 5, 7])); // ["0->2", "4->5", "7"]
-console.log(summaryRanges([0, 2, 3, 4, 6, 8, 9])); // ["0", "2->4", "6", "8->9"]
+// console.log(summaryRanges([0, 1, 2, 4, 5, 7])); // ["0->2", "4->5", "7"]
+// console.log(summaryRanges([0, 2, 3, 4, 6, 8, 9])); // ["0", "2->4", "6", "8->9"]

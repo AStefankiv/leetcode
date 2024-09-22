@@ -9,45 +9,61 @@
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-expand-lg"
+    :class="{'navbar-light bg-light': !useDarkNavbar, 'navbar-dark bg-dark': useDarkNavbar}"
+  >
     <div class="container-fluid">
       <a class="navbar-brand" href="#">My Vue</a>
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" href="#">Home</a>
+        <li v-for='(page, index) in pages' class="nav-item" :key="index">
+          <a
+          class="nav-link"
+          :class="{ active: activePage == index }"
+          aria-current="page"
+          :href="page.link.url"
+          :title="`This link goes to the ${page.link.text} page`"
+          @click.prevent="activePage = index"
+          >{{ page.link.text }}</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">About</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Contact</a>
-        </li>
+      </ul>
+      <form class="d-flex">
+        <button class="btn btn-primary"
+        @click.prevent="useDarkNavbar = !useDarkNavbar"
+        >Toggle</button>
+      </form>
     </div>
   </nav>
   <div id="content" class="container">
-    <h1>{{ pageTitle }}</h1>
-    <p>{{ content }}</p>
+    <h1>{{ pages[activePage].pageTitle }}</h1>
+    <p>{{ pages[activePage].content }}</p>
   </div>
 
   <script>
-
     Vue.createApp({
       data() {
         return {
-          pageTitle: 'Hello, Vue',
-          content: 'Welcome to the wonderful world of Vue'
-        }
+          activePage: 0,
+          useDarkNavbar: true,
+          pages: [
+            {
+              link: { text: 'Home', url: 'index.html' },
+              pageTitle: 'Home Page',
+              content: 'This is the home page content.'
+            },
+            {
+              link: { text: 'About', url: 'about.html' },
+              pageTitle: 'About Page',
+              content: 'This is the about page content.'
+            },
+            {
+              link: { text: 'Contact', url: 'contact.html' },
+              pageTitle: 'Contact Page',
+              content: 'This is the contact page content.'
+            }
+          ]
+        };
       }
-    }).mount('#content');
-
-    Vue.createApp({
-      data() {
-        return {
-          pageTitle: 'Hello, Vue',
-          content: 'Welcome to the wonderful world of Vue'
-        }
-      }
-    }).mount('#content');
+    }).mount('body')
   </script>
 </body>
 </html>

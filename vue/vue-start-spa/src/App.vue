@@ -38,7 +38,6 @@ export default {
       let data = await res.json();
 
       this.pages = data;
-      console.log("this.pages", this.pages);
     }
   }
 }

@@ -9,3 +9,5 @@ const assign_cookies = (g, s) => {
   }
   return i;
 }
+
+const g = [1, 2, 3];

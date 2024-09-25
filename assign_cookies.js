@@ -11,3 +11,5 @@ const assign_cookies = (g, s) => {
 }
 
 const g = [1, 2, 3];
+const s = [1, 1];
+console.log(assign_cookies(g, s)); // 1

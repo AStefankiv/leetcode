@@ -42,3 +42,7 @@ export default {
   }
 }
 </script>
+
+https://www.youtube.com/watch?v=1GNsWa_EZdw&t=307s
+
+// 2:01:00

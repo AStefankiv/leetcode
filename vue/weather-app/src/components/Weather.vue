@@ -1,21 +1,37 @@
 <template>
-  <div class="app">
-    <div class="header container h-100 p-5">
-      <h1 class="mb-5">Weather App</h1>
-      <div class="d-flex justify-content-center h-100">
-        <div class="searchbar w-50 mx-2">
-          <input type="text" class="input form-control" v-model="city" placeholder="Enter a city" />
+  <div class="container p-0">
+    <div class="d-flex">
+      <div class="card main-div w-100">
+        <div class="p-3">
+          <h2 class="mb-1 day">Tuesday</h2>
+          <p class="text-light date mb-0">date</p>
+          <small>time</small>
+          <h2 class="place"><i class="fa fa-location">Rio <small>country</small></i></h2>
+          <div class="temp">
+            <h1 class="weather-temp">19&deg;</h1>
+            <h2 class="text-light">description</h2>
+          </div>
         </div>
-        <button class="btn-search btn btn-primary">Search <i class="fas fa-search"></i></button>
       </div>
-      <p>You are searching for {{ city }}</p>
+    </div>
+    <div class="card card-2 w-100">
+      <table class="m-4">
+        <tbody>
+          
+        </tbody>
+      </table>
     </div>
   </div>
 </template>
 
 <script>
 
-export default {}
+export default {
+  name: 'myWeather',
+  props: {
+    city: String
+  }
+}
 
 </script>
 

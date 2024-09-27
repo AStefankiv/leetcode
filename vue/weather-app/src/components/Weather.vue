@@ -13,8 +13,7 @@
           </div>
         </div>
       </div>
-    </div>
-    <div class="card card-2 w-100">
+      <div class="card card-2 w-100">
       <table class="m-4">
         <tbody>
           <tr>
@@ -40,17 +39,29 @@
         </form>
       </div>
     </div>
+    </div>
   </div>
 </template>
 
 <script>
 import DaysWeather from './DaysWeather.vue';
+import axios from 'axios';
 
 export default {
   name: 'myWeather',
   components: {
     DaysWeather,
   },
+  props: {
+    city: String,
+  },
+  data () {
+    return {}
+  },
+  async created () {
+    const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${this.city}&units=metric&appid=5d03de9143d8f66e4da9cd4ff4be7cfc`);
+    console.log('Response data:', response.data);
+  }
 }
 
 </script>

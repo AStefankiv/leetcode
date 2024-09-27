@@ -1,8 +1,8 @@
 <template>
   <div class="container p-0">
     <div class="d-flex">
-      <div class="card main-div w-100">
-        <div class="p-3">
+       <div class="card main-div w-100">
+          <div class="p-3">
           <h2 class="mb-1 day">Tuesday</h2>
           <p class="text-light date mb-0">date</p>
           <small>time</small>
@@ -51,8 +51,7 @@ export default {
 
 </script>
 
-<style>
-
+<style scoped>
 body {
   background-color: #343d4b;
 }
@@ -71,7 +70,7 @@ h2.mb-1.day {
 .main-div {
   border-radius: 20px;
   color: #fff;
-  background-image: url("https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0");
+  background-image: url('https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0');
   background-size: cover;
   background-position: center;
   background-blend-mode: overlay;

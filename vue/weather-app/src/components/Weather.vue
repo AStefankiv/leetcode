@@ -3,13 +3,13 @@
     <div class="d-flex">
        <div class="card main-div w-100">
           <div class="p-3">
-          <h2 class="mb-1 day">Tuesday</h2>
-          <p class="text-light date mb-0">date</p>
-          <small>time</small>
-          <h2 class="place"><i class="fa fa-location">Rio <small>country</small></i></h2>
+          <h2 class="mb-1 day">{{ dayName }}</h2>
+          <p class="text-light date mb-0">{{date}}</p>
+          <small>{{time}}</small>
+          <h2 class="place"><i class="fa fa-location">{{ name }}<small>{{country}}</small></i></h2>
           <div class="temp">
-            <h1 class="weather-temp">19&deg;</h1>
-            <h2 class="text-light">description</h2>
+            <h1 class="weather-temp">{{ Math.round(temperature) }}°C</h1>
+            <h2 class="text-light">{{ description }} <img :src="iconUrl" alt="icon" /></h2>
           </div>
         </div>
       </div>
@@ -18,15 +18,19 @@
         <tbody>
           <tr>
             <th>Sea Level</th>
-            <td>100</td>
+            <td>{{ sea_level }} m </td>
           </tr>
           <tr>
-            <th>Sea Level</th>
-            <td>100</td>
+            <th>Wind</th>
+            <td>{{ wind }}</td>
           </tr>
           <tr>
-            <th>Sea Level</th>
-            <td>100</td>
+            <th>Country</th>
+            <td>{{ country }}</td>
+          </tr>
+          <tr>
+            <th>Humidity</th>
+            <td>{{ humidity }}</td>
           </tr>
         </tbody>
       </table>
@@ -56,11 +60,43 @@ export default {
     city: String,
   },
   data () {
-    return {}
+    return {
+      temperature: null,
+      description: null,
+      iconUrl: null,
+      date: null,
+      time: null,
+      name: null,
+      monthNames: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+      dayNames: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+      sea_level: null,
+      wind: null,
+      country: null,
+      humidity: null,
+    }
   },
   async created () {
     const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${this.city}&units=metric&appid=5d03de9143d8f66e4da9cd4ff4be7cfc`);
-    console.log('Response data:', response.data);
+    const weatherData = response.data;
+    this.temperature = weatherData.main.temp;
+    this.description = weatherData.weather[0].description;
+    this.name = weatherData.name;
+    this.iconUrl = `http://openweathermap.org/img/w/${weatherData.weather[0].icon}.png`;
+    const d = new Date();
+    this.date = d.getDate() + ' ' + (this.monthNames[d.getMonth()]) + ' ' + d.getFullYear();
+    const seconds = () => {
+      if (d.getSeconds() < 10) {
+        return '0' + d.getSeconds();
+      }
+      return d.getSeconds();
+    }
+    this.time = d.getHours() + ':' + d.getMinutes() + ':' + seconds();
+    this.dayName = this.dayNames[d.getDay()];
+    this.sea_level = weatherData.main.sea_level;
+    this.wind = weatherData.wind.speed;
+    this.country = weatherData.sys.country;
+    this.humidity = weatherData.main.humidity;
+    console.log(weatherData);
   }
 }
 

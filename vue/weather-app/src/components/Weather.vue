@@ -6,7 +6,8 @@
           <h2 class="mb-1 day">{{ dayName }}</h2>
           <p class="text-light date mb-0">{{date}}</p>
           <small>{{time}}</small>
-          <h2 class="place"><i class="fa fa-location">{{ name }}<small>{{country}}</small></i></h2>
+          <h2 class="place"><i class="fa fa-location">
+            <small> - </small>{{ name }} - <small>{{country}}</small></i></h2>
           <div class="temp">
             <h1 class="weather-temp">{{ Math.round(temperature) }}°C</h1>
             <h2 class="text-light">{{ description }} <img :src="iconUrl" alt="icon" /></h2>
@@ -18,7 +19,8 @@
         <tbody>
           <tr>
             <th>Sea Level</th>
-            <td>{{ sea_level }} m </td>
+            <td v-if="sea_level > 0">{{ sea_level }} m </td>
+            <td v-else>Null</td>
           </tr>
           <tr>
             <th>Wind</th>
@@ -35,11 +37,11 @@
         </tbody>
       </table>
 
-      <DaysWeather></DaysWeather>
+      <DaysWeather :cityname="cityname"></DaysWeather>
 
       <div id="div_Form" class="d-flex m-3 justify-content-center">
         <form action="">
-          <input type="button" value="Change Location" class="btn change-btn btn-primary">
+          <input type="button" value="Change Location" @click="changeLocation" class="btn change_btn btn-primary">
         </form>
       </div>
     </div>
@@ -61,6 +63,7 @@ export default {
   },
   data () {
     return {
+      cityname: this.city,
       temperature: null,
       description: null,
       iconUrl: null,
@@ -75,7 +78,13 @@ export default {
       humidity: null,
     }
   },
+  methods: {
+    changeLocation() {
+      window.location.reload();
+    }
+  },
   async created () {
+    try {
     const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${this.city}&units=metric&appid=5d03de9143d8f66e4da9cd4ff4be7cfc`);
     const weatherData = response.data;
     this.temperature = weatherData.main.temp;
@@ -96,7 +105,14 @@ export default {
     this.wind = weatherData.wind.speed;
     this.country = weatherData.sys.country;
     this.humidity = weatherData.main.humidity;
-    console.log(weatherData);
+    } catch (error) {
+      if (error.response && error.response.status === 404) {
+        alert('City not found');
+      } else {
+        alert('An error occurred');
+      }
+      console.log('Error fetching weather data', error);
+    }
   }
 }
 
@@ -194,8 +210,8 @@ tr:hover {
   color: red;
 }
 
-.change-btn {
-  background-image: linear-gradient(to right, cyan, magenta);
+.change_btn {
+  background-image: linear-gradient(to right, magenta, cyan);
 }
 
 .change_btn:hover {

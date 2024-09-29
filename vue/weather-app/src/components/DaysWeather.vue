@@ -49,7 +49,7 @@ export default {
           }
           return acc;
         }, []).slice(1, 5);
-        console.log('filterData', filterData);
+        // console.log('filterData', filterData);
         this.forecast = filterData;
         this.loading = false;
       }).catch(error => {

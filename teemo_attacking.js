@@ -1,4 +1,4 @@
-const timeSeries = [1, 4];
+const timeSeries = [2, 4];
 const duration = 2;
 
 const findPoisonedDuration = (timeSeries, duration) => {

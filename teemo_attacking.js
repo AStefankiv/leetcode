@@ -1,4 +1,4 @@
-const timeSeries = [2, 4];
+const timeSeries = [2, 4, 5];
 const duration = 2;
 
 const findPoisonedDuration = (timeSeries, duration) => {
@@ -12,4 +12,4 @@ const findPoisonedDuration = (timeSeries, duration) => {
   return total + duration;
 }
 
-console.log(findPoisonedDuration(timeSeries, duration)); // 4
+console.log(findPoisonedDuration(timeSeries, duration));

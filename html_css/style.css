@@ -8,6 +8,7 @@ body {
 }
 #box-1{
   /* align-self: center; */
+  margin-right: auto;
 }
 
 .box {

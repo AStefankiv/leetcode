@@ -1,23 +1,25 @@
 import React, { useRef, useEffect } from 'react';
 
+
 const App = () => {
-  const inputRef = useRef(null);
+  const dropdownRef = useRef();
 
-  const focusInput = () => {
-    inputRef.current.focus();
-  };
-
-  // Use useEffect to focus on load
   useEffect(() => {
-    focusInput(); // Focus the input on initial render
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        console.log("Clicked outside dropdown");
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+  
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
   }, []);
-
-  return (
-    <div>
-      <input ref={inputRef} type="text" placeholder="Type here..." />
-      <button onClick={focusInput}>Focus Input</button>
-    </div>
-  );
-};
+  
+  return <div ref={dropdownRef}>Dropdown Menu</div>;
+  
+};  
+  
 
 export default App;

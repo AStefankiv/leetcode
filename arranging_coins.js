@@ -1,13 +1,11 @@
-const coins = 5;
-
 const arrangeCoins = (n) => {
-  let k = 0;
-  while (n >= k + 1) {
-    k += 1;
-    n -= k;
+  let row = 0;
+  while (n >= row + 1) {
+    row += 1;
+    n -= row;
   }
-  return k;
+  return row;
 }
 
-console.log(arrangeCoins(coins)); // 2
+console.log(arrangeCoins(5)); // 2
 console.log(arrangeCoins(8)); // 3

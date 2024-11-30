@@ -4,6 +4,7 @@ const findDisappearedNumbers = (nums) => {
 
   const start = Math.min(...sorted);
   const end = Math.max(...sorted);
+  console.log("Start: ", Math.min(...sorted));
 
   for (let i = start; i <= end; i += 1) {
     if (!sorted.has(i)) {

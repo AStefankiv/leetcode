@@ -1,18 +1,18 @@
 const nums = [1, 1, 0, 2, 2, 2];
 
-const maxInRow = (nums) => {
+const maxIn_Row = (nums) => {
   let count = 1;
-  let max = 0;
-  for (let i = 0; i < nums.length; i++) {
+  let maxCount = 0;
+  for (let i = 0; i < nums.length; i += 1) {
     if (nums[i] === nums[i + 1]) {
-      count++;
+      count += 1;
     } else {
-      max = Math.max(max, count);
+      maxCount = Math.max(maxCount, count);
       count = 1;
     }
   }
 
-  return max;
+  return maxCount;
 }
 
-console.log(maxInRow(nums)); // 3
+console.log(maxIn_Row(nums));// 3

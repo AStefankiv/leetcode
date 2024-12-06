@@ -25,5 +25,5 @@ const findContentChildren = (g, s) => {
   return contentChildren;
 }
 
-console.log(findContentChildren([1, 2, 3], [1, 1]));
-console.log(findContentChildren([1, 2], [1, 2, 3]));
+console.log(findContentChildren([1, 2, 3], [1, 1]));// 1
+console.log(findContentChildren([1, 2], [1, 2, 3]));// 2

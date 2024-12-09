@@ -14,16 +14,19 @@ const findContentChildren = (g, s) => {
   g.sort((a, b) => a - b);
   s.sort((a, b) => a - b);
 
-  let contentChildren = 0;
+  let countKids = 0;
   for (let i = 0; i < s.length; i += 1) {
-    if (s[i] >= g[contentChildren]) {
-      contentChildren += 1;
+    if (s[i] >= g[countKids]) {
+      countKids += 1;
+    }
 
-      if (contentChildren === g.length) break;
+    if (countKids === g.length) {
+      break;
     }
   }
-  return contentChildren;
+
+  return countKids;
 }
 
 console.log(findContentChildren([1, 2, 3], [1, 1]));// 1
-console.log(findContentChildren([1, 2], [1, 2, 3]));// 2
+console.log(findContentChildren([1, 2], [1, 3, 3]));// 2

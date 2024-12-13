@@ -8,4 +8,4 @@ const positive_negative = (x, y) => {
 
 console.log(positive_negative(2, 2)); // false
 console.log(positive_negative(-2, 2)); // true
-console.log(positive_negative(2, -2)); // true
+console.log(positive_negative(2, -2));

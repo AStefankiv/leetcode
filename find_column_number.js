@@ -19,5 +19,3 @@ function convertToTitle(columnNumber) {
 console.log(convertToTitle(1));    // Output: "A"
 console.log(convertToTitle(28));   // Output: "AB"
 console.log(convertToTitle(701));  // Output: "ZY"
-
-console.log(9 % 26); // 9

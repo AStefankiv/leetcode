@@ -15,7 +15,6 @@ function convertToTitle(columnNumber) {
   return result;
 }
 
-// Example usage:
 console.log(convertToTitle(1));    // Output: "A"
 console.log(convertToTitle(28));   // Output: "AB"
 console.log(convertToTitle(701));  // Output: "ZY"

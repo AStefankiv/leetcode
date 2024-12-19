@@ -21,3 +21,7 @@ function containsNearbyDuplicate(nums, k) {
   // If no duplicates are found within k distance, return false
   return false;
 }
+
+console.log(containsNearbyDuplicate([1,2,3,1], 3)); // true
+console.log(containsNearbyDuplicate([1,0,1,1], 1)); // true
+console.log(containsNearbyDuplicate([1,2,3,1,2,3], 2)); // false

@@ -15,7 +15,8 @@ function containsNearbyDuplicate(nums, k) {
       // If the size of the set exceeds k, remove the oldest element to maintain the window size
       if (seen.size > k) {
           seen.delete(nums[i - k]);
-      }
+          console.log('Delete', nums[i - k]);
+        }
   }
   
   // If no duplicates are found within k distance, return false

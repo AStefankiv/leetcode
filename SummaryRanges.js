@@ -16,5 +16,25 @@ for (let i = 1; i < nums.length; i += 1) {
 
 // Push the last chunk after the loop
 result.push(currentChunk);
-
 console.log(result); // [[0, 1, 2], [4, 5, 6], [8, 9]]
+
+
+
+const SummaryRanges = (array) => {
+  const result = [];
+  let currentChunk = [array[0]];
+
+  for (let i = 1; i < array.length; i += 1) {
+    if (array[i] === array[i - 1] + 1) {
+      currentChunk.push(array[i]);
+    } else {
+      result.push(currentChunk);
+      currentChunk = [array[i]];
+    }
+  }
+
+  result.push(currentChunk);
+  return result;
+}
+
+console.log(SummaryRanges([0, 1, 2, 4, 5, 6, 8, 9])); // [[0, 1, 2], [4, 5, 6], [8, 9]]

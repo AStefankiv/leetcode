@@ -12,11 +12,10 @@ const Fullpage = () => {
     align-items: center;
     font-size: 24px;
     font-weight: bold;
-    border-radius: 0px;
+    border-radius: 15px;
     margin: 10px;
-    &:hover {
-      color: white;
-    }
+    color: white;
+    padding: 15rem;
   `;
 
   return (
@@ -24,26 +23,28 @@ const Fullpage = () => {
     css={css`
       display: flex;
       flex-direction: column;
-      height: 100vh;
+      height: auto;
       margin: 0;
       `
     }>
 
       <div css={css`
       ${sectionStyle}
-      background-color:rgb(246, 143, 143);
+      background-color:rgb(251, 118, 195);
+      margin-top: 30px;
       `}>
         <ComponentOne />
       </div>
       <div css={css`
       ${sectionStyle}
-      background-color:rgb(151, 250, 151);
+      background-color:rgb(75, 249, 249);
       `}>
         <ComponentTwo />
       </div>
       <div css={css`
       ${sectionStyle}
-      background-color:rgb(154, 154, 255);
+      background-color:rgb(150, 240, 222);
+      margin-bottom: 30px;
       `}>
         <ComponentThree />
       </div>

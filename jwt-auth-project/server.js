@@ -51,7 +51,7 @@ app.post('/login', async (req, res) => {
   res.status(200).json({ token });
 });
 
-app.get('protected', (req, res) => {
+app.get('/protected', (req, res) => {
   const token = req.headers['authorization'];
 
   if (!token) {

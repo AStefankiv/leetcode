@@ -43,3 +43,11 @@ const authenticateToken = (req, res, next) => {
   });
 };
 
+// Protected route
+app.get('/protected', authenticateToken, (req, res) => {
+  res.json({ message: `Hello, ${req.user.username}! You have access.` });
+});
+
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});

@@ -1,12 +1,11 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 const jwt = require('jsonwebtoken');
 
 const app = express();
 const PORT = 3000;
 const SECRET_KEY = 'your_secret_key'; // Replace with a secure key
 
-app.use(bodyParser.json());
+app.use(express.json());//instead of body-parser
 
 let users = []; // In-memory user storage
 

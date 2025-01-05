@@ -6,16 +6,18 @@ const SECRET_KEY = 'secretkey';
 
 // Protected route
 router.get('/protected', (req, res) => {
-  const token = req.headers['authorization'];
-  if (!token) {
+  const authHeader = req.headers['authorization'];
+  if (!authHeader || !authHeader.startsWith('Bearer ')) {
     return res.status(401).json({ message: 'Access token required' });
   }
+
+  const token = authHeader.split(' ')[1];
 
   try {
     const decoded = jwt.verify(token, SECRET_KEY);
     res.json({ message: `Hello, ${decoded.username}! You have access.` });
-  } catch (err) {
-    res.status(403).json({ message: 'Invalid or expired token' });
+  } catch (error) {
+    res.status(401).json({ message: 'Invalid or expired token' });
   }
 });
 

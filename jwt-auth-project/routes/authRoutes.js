@@ -1,12 +1,13 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
+require('dotenv').config();
 
 const router = express.Router();
 
 const users = [];
 
-const SECRET_KEY = 'secretkey';
+const SECRET_KEY = process.env.SECRET_KEY;
 
 router.post('/sign-up', async (req, res) => {
   const { username, password } = req.body;

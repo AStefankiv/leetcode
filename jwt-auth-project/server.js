@@ -10,8 +10,8 @@ const PORT = 3000;
 app.use(bodyParser.json());
 
 
-app.use('/auth', authRoutes);
-app.use('/api', protectedRoutes);
+app.use('/', authRoutes);
+app.use('/', protectedRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

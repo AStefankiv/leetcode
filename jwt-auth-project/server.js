@@ -7,7 +7,7 @@ const protectedRoutes = require('./routes/protectedRoutes');
 const app = express();
 const PORT = 3000;
 
-app.use(bodyParser.json());
+app.use(bodyParser.json());//express as alternative to body-parser
 
 
 app.use('/', authRoutes);

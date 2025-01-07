@@ -1,26 +1,43 @@
-const express = require('express');
-const basicAuth = require('express-basic-auth');
+const express = require("express");
+const fs = require("fs");
 const path = require('path');
 
 const app = express();
-const PORT = 3000;
 
-app.use('/public', express.static(path.join(__dirname, 'public')));
-//app.use(express.static(path.join(__dirname, 'public')));
+function authentication(req, res, next) {
+    const authheader = req.headers.authorization;
+    console.log(req.headers);
 
-app.use(basicAuth({
-  users: {
-      'admin': 'supersecret',
-      'adam': 'password1234',
-      'eve': 'asdfghjkl',
-  },
-  challenge: true
-}))
+    if (!authheader) {
+        let err = new Error('You are not authenticated!');
+        res.setHeader('WWW-Authenticate', 'Basic');
+        err.status = 401;
+        return next(err)
+    }
 
-app.get('/', (req, res) => {
-    res.send('Hello World!');
-});
+    const auth = new Buffer.from(authheader.split(' ')[1],
+        'base64').toString().split(':');
+    const user = auth[0];
+    const pass = auth[1];
 
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-});
+    if (user == 'admin' && pass == 'password') {
+
+        // If Authorized user
+        next();
+    } else {
+        let err = new Error('You are not authenticated!');
+        res.setHeader('WWW-Authenticate', 'Basic');
+        err.status = 401;
+        return next(err);
+    }
+
+}
+
+// First step is the authentication of the client
+app.use(authentication)
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Server setup
+app.listen((3000), () => {
+    console.log("Server is Running ");
+})

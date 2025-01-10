@@ -10,20 +10,17 @@ app.get('/set-cookie', (req, res) => {
   res.send('Regular cookie set!');
 });
 
-// app.get('/set-signed-cookie', (req, res) => {
-//     res.cookie('sessionId', '12345', { signed: true, maxAge: 3600000, httpOnly: true });
-//   res.send('Signed cookie is set!');
-// });
-
+//or
 
 app.get('/set-signed-cookie', (req, res) => {
-    res.cookie('user', 'Veronika', { signed: true, maxAge: 3600000, httpOnly: true });
+    res.cookie('user', 'Veronika', { signed: true });
   res.send('Signed cookie is set!');
 });
 
 app.get('/', (req, res) => {
   console.log('Cookies: ', Object.assign({}, req.cookies));
   console.log('Cookies user: ', req.cookies.user);
+  
   console.log('Signed Cookies: ', Object.assign({}, req.signedCookies));
   console.log('Signed Cookies user: ', req.signedCookies.user);
 

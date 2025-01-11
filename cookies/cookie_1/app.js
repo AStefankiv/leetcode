@@ -32,7 +32,8 @@ app.get('/reset', (req, res) => {
 app.get('/expiry', (req, res) => {
   const expiryTime = req.session.createdAt + sessionMaxAge - Date.now();
   const expiryTimeInSeconds = Math.max(Math.floor(expiryTime / 1000), 0);
-  res.send(`Session will expire in ${expiryTimeInSeconds} seconds`);
+  const expiryTimeInMinutes = Math.max(Math.floor(expiryTimeInSeconds / 60), 0);
+  res.send(`Session will expire in ${expiryTimeInSeconds} seconds or ${expiryTimeInMinutes} minutes`);
 });
 
 app.listen(3000, () => {

@@ -3,11 +3,21 @@ const cookieSession = require('cookie-session');
 
 const app = express();
 
+const sessionMaxAge = 1 * 60 * 60 * 1000; // 1 hour
+
 app.use(cookieSession({
   name: 'session',
   keys: ['secretKey1', 'secretKey2'],
-  maxAge: 1 * 60 * 60 * 1000 // 1 hour
+  maxAge: sessionMaxAge,
 }));
+
+app.use((req, res, next) => {
+  if (!req.session.lastAccess) {
+    req.session.createdAt = Date.now();
+  }
+  req.session.lastAccess = Date.now();
+  next();
+});
 
 app.get('/', (req, res) => {
   req.session.views = (req.session.views || 0) + 1;
@@ -20,9 +30,9 @@ app.get('/reset', (req, res) => {
 });
 
 app.get('/expiry', (req, res) => {
-  const expiryTime = req.sessionOptions.maxAge - (Date.now() - req.session.lastAccess);
-  const secondsLeft = Math.max(Math.floor(expiryTime / 1000), 0);
-  res.send(`Your session expires in ${secondsLeft} seconds`);
+  const expiryTime = req.session.createdAt + sessionMaxAge - Date.now();
+  const expiryTimeInSeconds = Math.max(Math.floor(expiryTime / 1000), 0);
+  res.send(`Session will expire in ${expiryTimeInSeconds} seconds`);
 });
 
 app.listen(3000, () => {

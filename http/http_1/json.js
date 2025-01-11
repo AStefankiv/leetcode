@@ -4,8 +4,9 @@ const port = 8000;
 const host = 'localhost';
 
 const requestListener = function (req, res) {
+  res.setHeader('Content-Type', 'application/json');
   res.writeHead(200);
-  res.end('My first server!');
+  res.end(JSON.stringify({ message: 'This is a JSON response' }));
 };
 
 const server = http.createServer(requestListener);

@@ -1,17 +1,15 @@
-import { useState } from 'react'
+import { ThemeProvider } from './ThemeContext'
+import ThemeSwitcher from './ThemeSwitcher'
 import './App.css'
 
 function App() {
 
   return (
-    <>
-      <div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-      </div>
-    </>
+    <ThemeProvider>
+      <h1>React App with useContext</h1>
+      <ThemeSwitcher />
+    </ThemeProvider>
   )
 }
 
-export default App
+export default App;

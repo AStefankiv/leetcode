@@ -7,7 +7,7 @@ const ThemeSwitcher = () => {
   return (
     <div
       style={{
-        padding: "20px",
+        padding: "2px",
         backgroundColor: theme === "light" ? "#f0f0f0" : "#333",
         color: theme === "light" ? "#333" : "#f0f0f0",
       }}

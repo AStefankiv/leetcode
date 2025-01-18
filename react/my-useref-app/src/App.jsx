@@ -1,34 +1,27 @@
-import { useState, useRef } from 'react'
+import { useState, useMemo } from 'react'
 import './App.css'
 
 function App() {
-  const [value, setValue] = useState('');
-  const prevValueRef = useRef('');
-  
-  const handleInputChange = (e) => {
-    prevValueRef.current = value;
-    setValue(e.target.value);
-    
-    console.log('value:', value);
-    console.log('e.target:', e.target);
-    console.log('e.target.value:', e.target.value);
-  }
+  const [number, setNumber] = useState(1);
+  // const [count, setCount] = useState(0);
+
+  // Expensive calculation
+  const factorial = useMemo(() => {
+    console.log("Calculating factorial...");
+    const computeFactorial = (n) => (n <= 1 ? 1 : n * computeFactorial(n - 1));
+    return computeFactorial(number);
+  }, [number]);
 
   return (
-      <div style={{ padding: "20px" }}>
-        <h1>React App with useRef</h1>
-        <input
-          type="text"
-          value={value}
-          onChange={handleInputChange}
-          placeholder="Type something..."
-          style={{ padding: "10px", fontSize: "16px" }}
-        />
-        <br />
-        <p>Current Value: {value}</p>
-        <p>Previous Value: {prevValueRef.current}</p>
-      </div>
-  )
+    <div>
+      <h1>Factorial of {number}: {factorial}</h1>
+      <button onClick={() => setNumber(number + 1)}>Increase Number</button>
+      <button onClick={() => setNumber(number - 1)}>Decrease Number</button>
+
+      {/* <h2>Counter: {count}</h2>
+      <button onClick={() => setCount(count + 1)}>Increase Counter</button> */}
+    </div>
+  );
 }
 
 export default App;

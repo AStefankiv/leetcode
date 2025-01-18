@@ -1,28 +1,34 @@
-import { useRef, useEffect } from 'react'
+import { useState, useRef } from 'react'
 import './App.css'
 
 function App() {
-  const inputRef = useRef('hey');
+  const [value, setValue] = useState('');
+  const prevValueRef = useRef('');
   
-  const focusInput = () => {
-    inputRef.current.focus();
-  };
+  const handleInputChange = (e) => {
+    prevValueRef.current = value;
+    setValue(e.target.value);
+    
+    console.log('value:', value);
+    console.log('e.target:', e.target);
+    console.log('e.target.value:', e.target.value);
+  }
 
   return (
       <div style={{ padding: "20px" }}>
         <h1>React App with useRef</h1>
         <input
-          ref={inputRef}
           type="text"
-          placeholder="Click the button to focus"
+          value={value}
+          onChange={handleInputChange}
+          placeholder="Type something..."
           style={{ padding: "10px", fontSize: "16px" }}
         />
         <br />
-        <button onClick={focusInput} style={{ padding: "10px", fontSize: "16px", marginTop: 10 }}>
-          Focus Input
-        </button>
+        <p>Current Value: {value}</p>
+        <p>Previous Value: {prevValueRef.current}</p>
       </div>
   )
 }
 
-export default App
+export default App;

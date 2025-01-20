@@ -1,24 +1,25 @@
-import React, { useState, useCallback } from 'react'
-import './App.css'
+import { create } from 'zustand';
+import './App.css';
 
-const Button = React.memo(function Button({ onClick, label }) {
-  console.log(`Rendering Button: ${label}`);
-  return <button onClick={onClick}>{label}</button>;
-});
+const useStore = create((set) => ({
+  count: 0,
+  increment: () => set((state) => ({ count: state.count + 1 })),
+  // decrement: () => set((state) => ({ count: state.count - 1 })),
+  decrement: function() {
+    set((state) => ({ count: state.count - 1 }));
+  }
+}));
 
 function App() {
-    const [count, setCount] = useState(0);
-  
-    const increment = useCallback(() => {
-      setCount((prevCount) => prevCount + 1);
-    }, []);
-  
-    return (
-      <div>
-        <h1>Count: {count}</h1>
-        <Button onClick={increment} label="Increment" />
-      </div>
-    );
-  }
+  const { count, increment, decrement } = useStore();
+
+  return (
+    <div>
+      <h1>{count}</h1>
+      <button onClick={increment}>Increment</button>
+      <button onClick={decrement}>Decrement</button>
+    </div>
+  );
+}
 
 export default App;

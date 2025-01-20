@@ -1,26 +1,24 @@
-import { useState, useCallback} from 'react'
+import React, { useState, useCallback } from 'react'
 import './App.css'
 
+const Button = React.memo(function Button({ onClick, label }) {
+  console.log(`Rendering Button: ${label}`);
+  return <button onClick={onClick}>{label}</button>;
+});
+
 function App() {
-  const [count, setCount] = useState(0)
-  const [text, setText] = useState('')
-
-  const handleIncrement = useCallback(() => {
-    setCount(count + 1)
-  }, [count]);
-
-  return (
-    <div className="App">
-      <h1>Count: {count}</h1>
-      <button onClick={handleIncrement}>Increment</button>
-      <input
-      type="text"
-      value={text}
-      onChange={(e) => setText(e.target.value)}
-      placeholder='Type something...'
-      />
-    </div>
-  )
-}
+    const [count, setCount] = useState(0);
+  
+    const increment = useCallback(() => {
+      setCount((prevCount) => prevCount + 1);
+    }, []);
+  
+    return (
+      <div>
+        <h1>Count: {count}</h1>
+        <Button onClick={increment} label="Increment" />
+      </div>
+    );
+  }
 
 export default App;

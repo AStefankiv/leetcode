@@ -1,23 +1,40 @@
 import { create } from 'zustand';
+import { useState } from 'react';
 import './App.css';
 
-const useStore = create((set) => ({
-  count: 0,
-  increment: () => set((state) => ({ count: state.count + 1 })),
-  // decrement: () => set((state) => ({ count: state.count - 1 })),
-  decrement: function() {
-    set((state) => ({ count: state.count - 1 }));
-  }
+const useTodoStore = create((set) => ({
+  todos: [],
+  addTodo: (todo) => set((state) => ({ todos: [...state.todos, todo] })),
+  removeTodo: (index) => set((state) => ({todos: state.todos.filter((_, i) => i !== index),})),
 }));
 
 function App() {
-  const { count, increment, decrement } = useStore();
+  const { todos, addTodo, removeTodo } = useTodoStore();
+  const [newTodo, setNewTodo] = useState('');
+
+  const handleAdd = () => {
+    if (!newTodo) return;
+    addTodo(newTodo);
+    setNewTodo('');
+  };
 
   return (
-    <div>
-      <h1>{count}</h1>
-      <button onClick={increment}>Increment</button>
-      <button onClick={decrement}>Decrement</button>
+    <div className="App">
+      <h1>Todo List</h1>
+      <input
+        type="text"
+        value={newTodo}
+        onChange={(e) => setNewTodo(e.target.value)}
+      />
+      <button onClick={handleAdd}>Add</button>
+      <ul>
+        {todos.map((todo, index) => (
+          <li key={index}>
+            {todo}{' '}
+            <button onClick={() => removeTodo(index)}>Remove</button>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }

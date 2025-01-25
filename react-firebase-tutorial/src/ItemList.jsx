@@ -12,38 +12,22 @@ const ItemList = () => {
         id: doc.id,
         ...doc.data(),
       }));
-      console.log("itemsList", itemsList);
       setItems(itemsList);
     };
 
     fetchItems();
   }, []);
-  
-  console.log("Items:", items);
-  // useEffect(() => {
-  //   console.log("Updated Items:", items);
-  // }, [items]);
 
   return (
     <div>
     <h1>Items List:</h1>
     <ul>
-      {items.length > 0 ? (
-        items.map((item) => {
-          console.log(item);
-          const { name, description, id } = item;
-          console.log(name, description, id);
-          return (
-            <li key={item.id}>
-              <h2>{item.name}</h2>
-              <p>{item.description}</p>
-            </li>
-          );
-        }
-        )
-      ) : (
-        <p>No items found</p>
-      )}
+      {items.map((item) => (
+        <li key={item.id}>
+          <h3>{item.name}</h3>
+          <p>{item.description}</p>
+        </li>
+      ))}
     </ul>
   </div>
   );

@@ -28,20 +28,33 @@
 
 
 
-const strs = ["flower","flow","flight"];
-function longestCommonPrefix(strs) {
-  if (!strs.length) return "";
+const nums = [0,1,2,4,5,7];
 
-  let prefix = strs[0]; // Assume first word is the prefix
+const rangeNums = (nums) => {
+  let result = [];
+  let start = nums[0];
+  let end = nums[0];
 
-  for (let i = 1; i < strs.length; i++) {
-    while (strs[i].indexOf(prefix) !== 0) {
-      // Reduce the prefix
-      prefix = prefix.slice(0, -1);
-      if (!prefix) return "";
+  for (let i = 1; i < nums.length; i += 1) {
+    if (nums[i] - nums[i - 1] === 1) {
+      end = nums[i];
+    } else {
+      if (start === end) {
+        result.push(start);
+      } else {
+        result.push(`${start}->${end}`);
+      }
+      start = nums[i];
+      end = nums[i];
     }
   }
 
-  return prefix;
+  if (start === end) {
+    result.push(start);
+  } else {
+    result.push(`${start}->${end}`);
+  }
+
+  return result;
 }
-console.log(longestCommonPrefix(strs));
+console.log(rangeNums(nums));

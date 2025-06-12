@@ -1,20 +1,13 @@
-const nums = [0, 1, 2, 4, 5, 6, 8, 9];
-const result = [];
+const nums = [2, 7, 11, 15], target = 18;
 
-let currentChunk = [nums[0]]; // Start with the first number
-
-for (let i = 1; i < nums.length; i += 1) {
-    // Check if the current number is consecutive
-    if (nums[i] === nums[i - 1] + 1) {
-        currentChunk.push(nums[i]);
-    } else {
-        // If not consecutive, push the current chunk to result and start a new chunk
-        result.push(currentChunk);
-        currentChunk = [nums[i]];
+const twoSum = (nums, target) => {
+    for (let i = 0; i < nums.length; i++) {
+        for (let j = i + 1; j < nums.length; j++) {
+            if (nums[i] + nums[j] === target) {
+                return [i, j];
+            }
+        }
     }
+    return [];
 }
-
-// Push the last chunk after the loop
-result.push(currentChunk);
-
-console.log(result); // [[0, 1, 2], [4, 5, 6], [8, 9]]
+console.log(twoSum(nums, target));

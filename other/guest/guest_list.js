@@ -1,16 +1,30 @@
-const guestListEl = document.getElementById("guestList");
-const addGuestForm = document.getElementById("addGuestForm");
-const guestNameInput = document.getElementById("guestName");
+const addBtn = document.getElementById('addGuestBtn');
+const input = document.getElementById('guestInput');
+const list = document.getElementById('guestList');
 
-addGuestForm.addEventListener("submit", (event) => {
-  event.preventDefault();
-  const name = guestNameInput.value.trim();
-  if (!name) return;
+addBtn.addEventListener('click', () => {
+  const name = input.value.trim();
+  if (name === '') return;
 
-  const li = document.createElement("li");
+  const li = document.createElement('li');
   li.textContent = name;
-  guestListEl.appendChild(li);
 
-  guestNameInput.value = "";
-  guestNameInput.focus();
-})
+  const confirmBtn = document.createElement('button');
+  confirmBtn.textContent = 'Confirm';
+  confirmBtn.addEventListener('click', () => {
+    li.classList.toggle('confirmed');
+  });
+
+  const removeBtn = document.createElement('button');
+  removeBtn.textContent = 'Remove';
+  removeBtn.addEventListener('click', () => {
+    li.remove();
+  });
+
+  li.appendChild(confirmBtn);
+  li.appendChild(removeBtn);
+  list.appendChild(li);
+
+  input.value = '';
+  input.focus();
+});

@@ -8,19 +8,12 @@
   <script src="guest_list.js" defer></script>
 </head>
 <body>
-  <h1>Party Guest List</h1>
+  <h1>Guest List</h1>
 
-  <ul id="guestList">
-    <li>John Doe</li>
-    <li>Jane Smith</li>
-    <li>Emily Johnson</li>
-    <li>Michael Brown</li>
-    <li>Sarah Davis</li>
-  </ul>
+  <input type="text" id="guestInput" placeholder="Enter a name" required>
+  <button id="addGuestBtn">Add Guest</button>
 
-  <form id="addGuestForm">
-    <input type="text" id="guestName" placeholder="Enter a name" required>
-    <button>Add Guest</button>
-  </form>
+  <ul id="guestList"></ul>
+
 </body>
 </html>

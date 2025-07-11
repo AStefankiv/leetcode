@@ -1,6 +1,10 @@
-const num = 121;
-const numStr = num.toString();
-const reverseNum = numStr.split('').reverse().join('');
-const isPalindrome = numStr === reverseNum;
+const array = [2, 7, 9, 11];
+const sum = 11;
 
-console.log(isPalindrome ? `${num} is palindrome` : `${num} isn't palindrome`);
+for (let i = 0; i < array.length; i += 1) {
+  for (let j = 1; j <array.length; j += 1) {
+    if (array[i] + array[j] === sum) {
+      console.log(array[i], array[j]);
+    }
+  }
+}

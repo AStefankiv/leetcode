@@ -37,7 +37,7 @@ function App() {
   }, []);
 
   return (
-      <div style={{ textAlign: 'center', marginTop: '50px'}}>
+      <div>
         <h1>Click Speed Test Game</h1>
         <p>Click as many times as you can in 5 seconds!</p>
 
@@ -45,7 +45,7 @@ function App() {
           Start Test
         </button>
 
-        <div style={{margin: '20px'}}>
+        <div>
           <h2>Time Left: {timeLeft}s</h2>
           <h2>Clicks: {clickCount}</h2>
           {!gameRunning && timeLeft === 0 && <h3>Final Score: {clickCount}</h3>}

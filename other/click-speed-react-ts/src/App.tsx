@@ -37,8 +37,35 @@ function App() {
   }, []);
 
   return (
-      <div>
+      <div style={{ textAlign: 'center', marginTop: '50px'}}>
         <h1>Click Speed Test Game</h1>
+        <p>Click as many times as you can in 5 seconds!</p>
+
+        <button onClick={handleStart} disabled={gameRunning}>
+          Start Test
+        </button>
+
+        <div style={{margin: '20px'}}>
+          <h2>Time Left: {timeLeft}s</h2>
+          <h2>Clicks: {clickCount}</h2>
+          {!gameRunning && timeLeft === 0 && <h3>Final Score: {clickCount}</h3>}
+      </div>
+
+      <button
+        onClick={handleClick}
+        disabled={!gameRunning}
+        style={{
+          padding: '20px 40px',
+          fontSize: '1.5rem',
+          backgroundColor: gameRunning ? '#4caf50' : '#ccc',
+          color: 'white',
+          border: 'none',
+          borderRadius: '10px',
+          cursor: gameRunning ? 'pointer' : 'not-allowed'
+        }}
+        >
+          Click Me!
+      </button>
       </div>
   )
 }

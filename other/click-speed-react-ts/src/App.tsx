@@ -53,7 +53,6 @@ function App() {
 
       <button
         onClick={handleClick}
-        disabled={!gameRunning}
         style={{
           padding: '20px 40px',
           fontSize: '1.5rem',

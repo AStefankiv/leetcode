@@ -59,7 +59,6 @@ function App() {
           backgroundColor: gameRunning ? '#4caf50' : '#ccc',
           color: 'white',
           border: 'none',
-          borderRadius: '10px',
           cursor: gameRunning ? 'pointer' : 'not-allowed'
         }}
         >
